@@ -5,8 +5,13 @@ from django.contrib.auth.decorators import login_required
 from .form import CreatePostForm, UpdatePostForm
 from .models import Post
 
-def AllPostsView(request):
+def VisiblePostView(request):
     obj = Post.objects.all()
+    context = {'obj':obj}
+    return render(request, 'blog/created_posts.html', context)
+
+def AllPostsView(request):
+    obj = Post.objects.filter(visible=True)
     if request.method == 'POST':
         form = CreatePostForm(request.POST)
         if form.is_valid():
