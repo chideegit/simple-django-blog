@@ -38,7 +38,7 @@
         <h5 class="card-title">{{o.title}}</h5>
         <p class="card-text">{{o.body|slice:":100"}}</p>
         <small><p>Created by <b>{{o.author}}</b> on {{o.date_created}}</p></small>
-        <small><a href="#" class="card-link">Read Article</a></small>
+        <small><a href="{% url 'post-detail' o.pk %}" class="card-link">Read Article</a></small>
     </div>
 </div>
 {% endfor %}
